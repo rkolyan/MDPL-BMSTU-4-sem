@@ -8,15 +8,17 @@ print16u PROC NEAR
 	mov DX, X
 	mov CX, 4
 	mov FLAG, 0
+	mov BX, OFFSET SYMBOLS
 
 CYCLE_16u:
-	mov BL, CL
+	mov CH, CL
 	mov CL, 4
 	rol DX, CL 		;Циклически сдвигает каждый раз на 4 чтобы проверять тетрэдру
-	mov CL, BL
+	mov CL, CH
+	mov CH, 0
 	mov AX, 15
 	and AX, DX
-	mov BX, OFFSET SYMBOLS
+
 	cmp AL, 0
 	jne DOIT
 	cmp FLAG, 0
@@ -25,11 +27,11 @@ CYCLE_16u:
 DOIT:
 	mov FLAG, 1
 	xlat
-	mov BX, DX
+	push DX
 	mov DX, AX
 	mov AH, 2
 	int 21h
-	mov DX, BX
+	pop DX
 
 NEXT_16u:
 	loop CYCLE_16u

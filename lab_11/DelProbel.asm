@@ -5,7 +5,7 @@ public DelProbel
 .CODE
 DelProbel:
 	push EBP           ; Сохраняем регистры согласно конвенции cdecl
-	MOV EBP, ESP
+	mov EBP, ESP
 	push EBX
 	push EDI
 	push ESI
@@ -48,7 +48,7 @@ CYCLE:                 ; Этот цикл можно было бы сделат
 	loop CYCLE
 
 RETURN:
-	mov EAX, ECX       ; Присваиваем ECX результат (Это будет длина новой строки)
+	mov EAX, ECX       ; Присваиваем EAX результат (Это будет длина новой строки)
 	pop ESI            ; Восстанавливаем регистры согласно конвенции cdecl
 	pop EDI
 	pop EBX

@@ -18,7 +18,7 @@ CopyStr:                ; Копирует(пересылает) из одной
 	rep movsb           ; Пока ECX != 0 выполняй [EDI] = [ESI], ESI++, EDI++, ECX-- (Команда пересылки строк)
 
 RETURN:
-    pop EBX             ; Восстанавливаем регистры согласно конвенции cdecl
+    	pop EBX             ; Восстанавливаем регистры согласно конвенции cdecl
 	pop ESI
 	pop EDI
 	pop EBP
